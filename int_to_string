@@ -1,0 +1,14 @@
+//to put integers from array into a string
+
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int arr[] = {1, 2, 3, 4, 5};
+    stringstream s;
+    for(int i=0;i<5;i++){
+        s<<arr[i];
+    }
+    string ss(s.str());
+    cout<<ss<<endl;
+    return 0;
+}
