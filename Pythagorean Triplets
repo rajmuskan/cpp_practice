@@ -1,0 +1,14 @@
+int Solution::solve(int A) {
+    int count=0;
+    int x,y;
+    for(int i=1;i<=A;i++){
+        for(int j=i;j<=A;j++){
+            x = i*i + j*j;
+            y = sqrt(x);
+            if (y*y == x and y <= A) {
+                count++;
+            }
+        }
+    }
+    return count;
+}
