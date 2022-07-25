@@ -1,0 +1,24 @@
+vector<int> Solution::getRow(int A) {
+    vector<int> ans;
+    ans.push_back(1);
+    if(A==0){
+        return ans;
+    }
+    ans.push_back(1);
+    if(A==1){
+        return ans;
+    }
+    //now for A=2 and onwards;
+    A= A-1;  //number of times we want to run the loop below;
+    while(A--){
+        vector<int> temp;
+        temp.push_back(1);
+        for(int i=0;i<ans.size()-1;i++){
+            int t = ans[i]+ans[i+1];
+            temp.push_back(t);
+        }
+        temp.push_back(1);
+        ans = temp;
+    }
+    return ans;
+}
