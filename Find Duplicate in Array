@@ -1,0 +1,15 @@
+int Solution::repeatedNumber(const vector<int> &A) {
+    int n = A.size();
+    //taking an array of size n
+    int frequency[n+1] = {};
+    for(int i=0;i<n;i++){
+        int temp = A[i];
+        frequency[temp]++;
+    }
+    for(int i=0;i<=n;i++){
+        if(frequency[i]>1){
+            return i;
+        }
+    }
+    return -1;
+}
