@@ -1,0 +1,30 @@
+bool Solution::hotel(vector<int> &arrive, vector<int> &depart, int K) {
+    //if there are no rooms return false ie booking not possible
+    if(K==0){
+        return false;
+    }
+    int n=arrive.size();
+    vector<pair<int,char>> v;
+    
+    for(int i=0;i<n;i++){
+        v.push_back(make_pair(arrive[i],'a'));
+        v.push_back(make_pair(depart[i],'d'));
+    }
+    sort(v.begin(),v.end());
+    
+    int count=0;
+    int maxroom=0;
+    for(int i=0;i<v.size();i++){
+        if(v[i].second=='a'){
+            count++;
+            //ek baar me max kitna room hmlog ko khali chahiye
+            maxroom=max(maxroom,count);
+        }else{
+            count--;
+        }
+    }
+    if(maxroom>K){
+        return false;
+    }
+    return true;
+}
