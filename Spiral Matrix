@@ -1,0 +1,24 @@
+int dx[] = {0, 1, 0, -1};
+int dy[] = {1, 0, -1, 0};
+vector<vector<int> > Solution::solve(vector<int> &A, int B, int C) {
+    // assert(1<=A.size() && A.size()<=1e5);
+    // assert(A.size() == B*C);
+    //j is for changing the direction by traversing over dx or dy.
+    int j = 0;
+    int x = 0, y = -1;
+    vector<vector<int>> ans(B, vector<int>(C, 0));
+    for(int i = 0; i < B*C; ++i){
+        //assert(1<=A[i] && A[i]<=1e5);
+        int xx = x+dx[j];
+        int yy = y+dy[j];
+        if(xx<0 || xx>=B || yy<0 || yy>=C || ans[xx][yy]!=0){
+            j = (j+1)%4;
+            xx = x+dx[j];
+            yy = y+dy[j];
+        }
+        ans[xx][yy] = A[i];
+        x = xx;
+        y = yy;
+    }
+    return ans;
+}
