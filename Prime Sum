@@ -1,0 +1,24 @@
+int checkPrime(int x){
+    if(x==2){
+        return 1;
+    }
+    for(int d=2;d<=sqrt(x);d++){
+        if(x%d==0){
+            return 0;
+        }
+    }
+    return 1;
+}
+vector<int> Solution::primesum(int A) {
+    vector<int> ans;
+    
+    for(int i=2;i<A;i++){
+        if(checkPrime(i) && checkPrime(A-i)){
+            ans.push_back(i);
+            ans.push_back(A-i);
+            return ans;
+        }
+    }
+    
+}
+
