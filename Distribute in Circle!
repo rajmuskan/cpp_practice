@@ -1,0 +1,9 @@
+int Solution::solve(int A, int B, int C) {
+    //if no. of items to be delivered is less than or equal to size of circle.
+    if(A<=B-C+1){
+        return C+A-1;
+    }
+    //if it is greater then subtract B-C+1 and take modulus.
+    A= A-(B-C+1);
+    return (A%B==0) ? B : A%B;
+}
