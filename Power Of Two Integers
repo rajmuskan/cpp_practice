@@ -1,0 +1,13 @@
+int Solution::isPower(int A) {
+    int n =A;
+    int p;
+    //consider a^p here
+    //a can go maximum upto sqrt of n, iterating after that will be useless. 
+    for(int a=1;a<=sqrt(n);a++){
+        p=log(n)/log(a);
+        if(pow(a,p)==n){
+            return 1;
+        }
+    }
+    return 0;
+}
