@@ -1,0 +1,8 @@
+int Solution::gcd(int A, int B) {
+    //remainder becomes divisor for next division
+    //Here assume A is dividend
+    //and B is divisor
+    return (B == 0)?A:gcd(B, A%B);
+}
+//time complexity O(log n);
+//inbuilt function of gcd ->  __gcd(a,b);
