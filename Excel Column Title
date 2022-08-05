@@ -1,0 +1,16 @@
+string Solution::convertToTitle(int A) {
+    string ans="";
+    while(A){
+        int rem= A%26;
+        //EXCEPTIONAL CASE
+        if(rem==0){
+            ans = 'Z' + ans;
+            A=A-1;
+        }else{
+            //we append in the beginning each time so we dont need to reverse later.
+            ans = (char) ('A'+rem-1) + ans;
+        }
+        A = A/26;
+    }
+    return ans;
+}
