@@ -1,0 +1,9 @@
+class Solution {
+  public:
+    long long oddGame(long long N) {
+        // code here
+        long long a = floor(log2(N));   // Finding log2 of N
+        long long ans = pow(2,a);      // Finding 2 power log2(N)
+        return ans;
+    }
+};
