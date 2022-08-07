@@ -1,0 +1,9 @@
+int Solution::cpFact(int A, int B) {
+    assert(A<=1e9 && B<=1e9);
+    //there should be no common factors between A and B
+    //we calculate gcd of a and b , 
+  while(__gcd(A,B) != 1){
+    A = A / __gcd(A,B);
+  } 
+  return A;
+}
