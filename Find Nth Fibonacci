@@ -1,0 +1,49 @@
+const int mod = 1e9 + 7;
+#define ll long long
+void multiply(ll f[2][2], ll l[2][2]){
+    ll ans[2][2];
+    //multiplying f matrix with itself
+    for(int i=0;i<2;i++){
+        for(int j=0;j<2;j++){
+            ans[i][j]=0;
+            for(int k=0;k<2;k++){
+                ans[i][j] += (f[i][k] * l[k][j])%mod;
+            }
+        }
+    }
+    //copying ans matrix to f matrix, because we have to return f matrix.
+    for(int i=0;i<2;i++){
+        for(int j=0;j<2;j++){
+            f[i][j]=ans[i][j]%mod;
+        }
+    }
+    return;
+}
+void power(ll f[2][2], int n){
+    //base case
+    if(n==0 || n==1){
+        return;
+    }
+    //recursive call
+    power(f,n/2);
+    //small calculation part
+    multiply(f,f);  //it will make changes in f only so no return type.
+    ll m[2][2]={{1,1},{1,0}};
+    if(n%2!=0){
+        multiply(f,m);
+    }
+    return;
+}
+int fib(int n){
+    ll f[2][2]={{1,1},{1,0}};
+    //power function will do changes in f matix only so its return type will be void.
+    power(f,n-1);
+    return f[0][0];
+}
+int Solution::solve(int A) {
+    if(A==1){
+        return 1;
+    }
+    int ans = fib(A);
+    return ans;
+}
