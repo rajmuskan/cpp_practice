@@ -1,30 +1,28 @@
 #define mod 1000003
-vector<int>dp;
-int fact(int x){
-    if(x==0){
-        dp[0]=1;return dp[0];
-    }
-    dp[x]=(fact(x-1)%mod*x%mod)%mod;
-    return dp[x];
+typedef long long l;
+int fact(int n){
+    return (n == 1 || n == 0) ? 1 : n * fact(n - 1)%1000003;
 }
-int Solution::findRank(string a) {
-    int n=a.length();
-    dp.clear();
-    dp.resize(n,-1);
-    vector<int>c(256,0);
+int Solution::findRank(string A) {
+    int n=A.length();
+    //make an array to store all 256 characters presence.
+    int arr[256]={0};
     for(int i=0;i<n;i++){
-        c[a[i]]++;
+        arr[A[i]]++;
     }
-    int count=1;
+    //now iterate over string and calculate its rank.
+    l count=0;
     for(int i=0;i<n;i++){
-        for(int j=0;j<a[i];j++){
-            if(c[j]!=0){
-               // cout<<fact(n-i-1)<<" "<<n-i-1<<endl;
-                count=(count%mod+fact(n-i-1)%mod)%mod;
+        int temp=0;
+        for(int j=0;j<A[i];j++){
+            if(arr[j]){
+                temp++;
             }
         }
-        c[a[i]]--;
+        //cout<<fact[n-i-1]%mod<<" "<<endl;
+        arr[A[i]]--;
+        count = (count%mod + (temp * fact(n-1-i))%mod)%mod;
+        
     }
-    return count;
+    return (count+1)%mod;
 }
-
