@@ -1,0 +1,31 @@
+bool checkWoodGotOrNot(vector<int> &A, int mid, int B){
+    //mid represents the position from where the wood is to be cut.
+    int sum = 0;
+    for(int i=0;i<A.size();i++){
+        if(A[i]>mid){
+            sum+=(A[i]-mid);
+        }
+    }
+    if(sum>=B){
+        return true;
+    }else{
+        return false;
+    }
+}
+int Solution::solve(vector<int> &A, int B) {
+    int n=A.size();
+    int low =0; //minimumheight of tree
+    int high=1000000; //maximum height of tree.
+    //we need to apply binary search in y direction, ie along the height of trees.
+    int ans=0;
+    while(low<=high){
+        int mid = low +(high-low)/2;
+        if(checkWoodGotOrNot(A,mid,B)){
+            ans=mid;
+            low=mid+1;
+        }else{
+            high=mid-1;
+        }
+    }
+    return ans;
+}
