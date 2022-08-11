@@ -1,0 +1,20 @@
+int Solution::solve(vector<int> &A, int B) {
+    int n=A.size();
+    int count=0;
+    int i=0;
+    while(i<n){
+        int got=-1;
+        for(int j=min(n-1,i+B-1);j>=max(0, i-B+1);j--){
+            if(A[j]==1 ){
+                got=j;
+                count++;
+                break;
+            }
+        }
+        if(got==-1){
+            return -1;
+        }
+        i=got+B;
+    }
+    return count;
+}
