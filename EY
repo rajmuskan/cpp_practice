@@ -1,0 +1,27 @@
+#include<bits/stdc++.h>
+using namespace std;
+int calculateDesktopProductIDs(vector<char> productID){
+    int answer=0;
+    for(auto x:productID){
+        if(x=='a' || x=='e' || x=='i' || x=='o' || x=='u'  || x=='A' || x=='E' || x=='I' || x=='O' || x=='U'){
+            continue;
+        }
+        answer++;
+    }
+    return answer;
+}
+int main(){
+    int productID_size;
+    cin>>productID_size;
+    
+    vector<char> productID;
+    for(int idx=0; idx<productID_size;idx++){
+        char temp;
+        cin>>temp;
+        productID.push_back(temp);
+    }
+    
+    int result = calculateDesktopProductIDs(productID);
+    cout<<result;
+    return 0;
+}
