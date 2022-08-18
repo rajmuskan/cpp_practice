@@ -1,0 +1,30 @@
+class Solution {
+public:
+    bool isSubsequence(string s, string t) {
+        int n = s.length();
+        int m = t.length();
+        
+        if(s.empty() && t.empty()){
+            return true;
+        }
+        //s alone can be empty because it is a subsequence.
+        if(t.empty()){
+            return false;
+        }
+        int temp=0;
+        for(int i=0;i<n;i++){
+            for(int j=temp;j<m;j++){
+                if(t[j]==s[i]){
+                    temp = j+1;
+                    break;
+                }else if(j == m-1){
+                    return false;
+                }
+            }
+            if(temp == m && i<n-1){
+                return false;
+            }
+        }
+        return true;
+    }
+};
