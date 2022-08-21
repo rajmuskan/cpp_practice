@@ -1,0 +1,10 @@
+unsigned int Solution::reverse(unsigned int A) {
+  unsigned int ans=0,i,j;
+  //  here below line means -> j = 2^0 and i = 2^31
+  for(i=1<<31,j=1;i>=1;i=i>>1,j=j<<1){
+      if(A&j){   //j is for checking whether the digit at jth position is set or not.
+        ans|=i;  //if it is set, then we use i to set the digit at ith position.
+      }
+  }
+  return ans;
+}
