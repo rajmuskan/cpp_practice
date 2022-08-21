@@ -1,0 +1,17 @@
+vector<int> singleNumber(vector<int> nums) 
+    {
+        // Code here.
+        int n = nums.size();
+        vector<int> ans;
+        unordered_map<int,int> m;
+        for(auto x:nums){
+            m[x]++;
+        }
+        for(auto x:m){
+            if(x.second==1){
+                ans.push_back(x.first);
+            }
+        }
+        sort(ans.begin(),ans.end());
+        return ans;
+    }
