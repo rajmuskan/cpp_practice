@@ -1,0 +1,16 @@
+int Solution::singleNumber(const vector<int> &A) {
+    int n=A.size();
+    int result=0;
+    for(int j=0;j<32;j++){
+        int count1=0;
+        for(int i=0;i<n;i++){
+            if(A[i]&(1<<j)){ //find jth bit is set or not.
+                count1++;
+            }
+        }
+        if(count1 % 3){
+            result = result + (1<<j); //set bit of number as 1
+        }
+    }
+    return result;
+}
