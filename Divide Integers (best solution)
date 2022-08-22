@@ -1,0 +1,24 @@
+int Solution::divide(int a, int b) {
+    long long int ans=0;
+    long long int A=a, B=b;
+    if(B==0){
+        return INT_MAX;
+    }
+    if(A==0){
+        return 0;
+    }
+    long long int sign = (A>0) ^ (B>0) ? -1 : 1;
+    A = abs(A);
+    B = abs(B);
+    for(int i=31;i>=0;i--){
+        long long int x = B<<i;
+        if(x>A){
+            continue;
+        }else{
+            A-=x;
+            ans |= 1ll<<i;
+        }
+    }
+    ans = sign * ans;
+    return ans>INT_MAX || ans<INT_MIN ? INT_MAX : ans;
+}
