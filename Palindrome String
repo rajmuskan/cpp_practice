@@ -1,0 +1,20 @@
+int Solution::isPalindrome(string A) {
+    string s="";
+    for(int i=0;i<A.length();i++){
+        if(!isalnum(A[i])){
+            continue;
+        }
+        s.push_back(A[i]);
+    }
+    
+    int start=0;
+    int end = s.length()-1;
+    while(start<end){
+        if(toupper(s[start])!=toupper(s[end])){
+            return 0;
+        }
+        start++;
+        end--;
+    }
+    return 1;
+}
