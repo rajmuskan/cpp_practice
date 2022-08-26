@@ -1,0 +1,10 @@
+string Solution::solve(string A) {
+    for(auto &x: A){
+        if(isupper(x)){
+            x= x + 32;
+        }else{
+            x = x - 32;
+        }
+    }
+    return A;
+}
