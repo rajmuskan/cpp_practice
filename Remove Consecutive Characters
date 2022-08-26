@@ -1,0 +1,14 @@
+string Solution::solve(string A, int B) {
+    for(int i=0;i<A.length()-1;i++){
+        if(A[i]!=A[i+1]){
+            continue;
+        }else{
+            if((A[i]==A[i+B-1]) && (A[i]!=A[i+B]) && A[i]!=A[i-1]){
+                A.erase(i,B);
+                i=i-1;
+            }
+            
+        }
+    }
+    return A;
+}
