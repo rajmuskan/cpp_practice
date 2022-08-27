@@ -1,0 +1,24 @@
+int Solution::strStr(const string A, const string B) {
+    if(B.length()==0){
+        return -1;
+    }
+    int j=0;
+    for(int i=0;i<A.length();i++){
+        if(A[i]==B[j]){
+            int temp=i;
+            for(int k=j;k<B.length();k++){
+                if(A[i]==B[k]){
+                    i++;
+                    if(k==B.length()-1){
+                        return temp;
+                    }
+                    continue;
+                }else{
+                    break;
+                }
+            }
+            i=temp;
+        }
+    }
+    return -1;
+}
