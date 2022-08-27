@@ -1,0 +1,25 @@
+long Solution::countSalutes(string A) {
+    long long int ans=0,n;
+    n=A.length();
+    long long int suffixarray[n];
+    
+    if(A[n-1]=='<'){
+        suffixarray[n-1]=1;
+    }else{
+        suffixarray[n-1]=0;
+    }
+    
+    for(long long int i=n-2;i>=0;i--){
+        if(A[i]=='<'){
+            suffixarray[i]=suffixarray[i+1] + 1;
+        }else{
+            suffixarray[i]=suffixarray[i+1];
+        }
+    }
+    for(long long int i=0;i<n;i++){
+        if(A[i]=='>'){
+            ans = ans + suffixarray[i];
+        }
+    }
+    return ans;
+}
