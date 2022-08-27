@@ -1,0 +1,15 @@
+int Solution::permuteStrings(string A, string B) {
+    vector<int> freq(26);
+    for(int i=0;i<A.size();i++){
+        freq[A[i]-97]++;
+    }
+    for(int i=0;i<B.size();i++){
+        freq[B[i]-97]--;
+    }
+    for(int i=0;i<26;i++){
+        if(freq[i]!=0){
+            return 0;
+        }
+    }
+    return 1;
+}
