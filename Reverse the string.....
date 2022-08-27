@@ -1,0 +1,25 @@
+string Solution::solve(string A) {
+    int n=A.size();
+    string ans, temp;
+    int i=0, j;
+    while(i<n){
+        while(i<n && A[i]==' '){
+            i++;
+        }
+        if(i>=n){
+            break;
+        }
+        j=i+1;
+        while(j<n && A[j]!=' '){
+            j++;
+        }
+        temp = A.substr(i,j-i);
+        if(ans.size()==0){
+            ans = temp;
+        }else{
+            ans =  temp + " " + ans;
+        }
+        i=j+1;
+    }
+    return ans;
+}
