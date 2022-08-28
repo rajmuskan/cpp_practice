@@ -1,0 +1,19 @@
+int check(string s){
+    int l = 0, r = s.size() - 1;
+    while(l < r){
+        if(s[l] != s[r]) return 0;
+        l++;
+        r--;
+    }
+    return 1;
+}
+int Solution::solve(string A) {
+    int n = A.size();
+    int ans = 0;
+    for(int i = 0; i < n; i++){
+        string temp = "";
+        while(i < n && A[i] != ' ') temp += A[i++];
+        ans += check(temp);
+    }
+    return ans;
+}
