@@ -1,0 +1,29 @@
+string Solution::solve(string A, string B) {
+    int n=A.length();
+    int m=B.length();
+    string ans="";
+    int countofbulls=0;
+    int countofcows=0;
+    for(int i=0;i<n;i++){
+        if(A[i]==B[i]){
+            countofbulls++;
+            A[i]='.';
+            B[i]='.';
+        }
+        
+    }
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+            if(A[i]=='.'){
+                break;
+            }
+            if(A[i]==B[j]){
+                countofcows++;
+                B[j]=',';
+                break;
+            }
+        }
+    }
+    ans =ans + to_string(countofbulls) + 'A' + to_string(countofcows) + 'B';
+    return ans;
+}
