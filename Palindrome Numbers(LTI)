@@ -1,0 +1,31 @@
+int Solution::solve(int A, int B, int C) {
+    vector<int> pal;
+    for(int i=A;i<=B;i++){
+        if(i<10){
+            pal.push_back(i);
+            continue;
+        }
+        int temp=i;
+        int rev=0;
+        while(temp){
+            int rem = temp%10;
+            rev = rev *10 + rem ;
+            temp=temp/10;
+        }
+        if(rev==i){
+            pal.push_back(i);
+        }
+        
+    }
+    // for(int i=0;i<pal.size();i++){
+    //     cout<<pal[i]<<endl;
+    // }
+    int n = pal.size();
+    int j = 0;
+    int ans = 0;
+    for(int i = 0; i < n; ++i){
+        while(j < n && pal[j] - pal[i] <= C ) ++j;
+        ans = max(ans, j-i);
+    }
+    return ans;
+}
