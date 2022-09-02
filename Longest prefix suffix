@@ -1,0 +1,23 @@
+class Solution{
+  public:		
+	int lps(string s) {
+	    // Your code goes here
+	    int n =s.length();
+	    int kmp[n]={0};
+	    for(int i=1;i<n;i++){
+	        int x=kmp[i-1];
+	        while(x>0 && s[i]!=s[x]){
+	            x = kmp[x-1];
+	        }
+	        if(s[i]==s[x]){
+	            x++;
+    	    }
+    	    kmp[i]=x;
+	    }
+	    int ans=0;
+	    for(int i=0;i<n;i++){
+	        ans = max(kmp[i],0);
+	    }
+	    return ans;
+	}
+};
