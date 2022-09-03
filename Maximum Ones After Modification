@@ -1,0 +1,21 @@
+int Solution::solve(vector<int> &A, int B) {
+    int n=A.size();
+    int i=0, j=-1, flip=0,ans=0;
+    while(i<n){
+        if(A[i]==0){
+            flip++;
+        }
+        while(flip>B){
+            j++;
+            if(A[j]==0){
+                flip--;
+            }
+        }
+        int len = i-j;
+        if(len>ans){
+            ans= len;
+        }
+        i++;
+    }
+    return ans;
+}
