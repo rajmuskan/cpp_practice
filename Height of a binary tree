@@ -1,0 +1,9 @@
+int height(struct Node* node){
+        // code here 
+        if(node==NULL){
+            return 0;
+        }
+        int lt = height(node->left);
+        int rt = height(node->right);
+        return 1 + max(lt,rt);
+    }
