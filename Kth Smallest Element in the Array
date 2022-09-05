@@ -1,0 +1,15 @@
+int Solution::kthsmallest(const vector<int> &A, int B) {
+    int n=A.size();
+    priority_queue<int> p;
+    for(int i=0;i<n;i++){
+        p.push(-A[i]);
+    }
+    int count=0;
+    while(!p.empty()){
+        if(count==B-1){
+            return -p.top();
+        }
+        p.pop();
+        count++;
+    }
+}
