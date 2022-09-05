@@ -1,0 +1,20 @@
+int func(vector<int> &A, int B){
+    int n=A.size(), count=0;
+    int sum=0;
+    int i=0;
+    int j=0;
+    while(i<n){
+        sum+=A[i];
+        while(sum>=B){
+            sum-=A[j];
+            j++;
+        }
+        count+=(i-j+1);
+        i++;
+    }
+    return count;
+}
+int Solution::numRange(vector<int> &A, int B, int C) {
+    if(B==0 && C==0) return 0;
+    return (func(A,C+1) - func(A,B));
+}
