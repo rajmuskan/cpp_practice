@@ -1,0 +1,14 @@
+int Solution::kthsmallest(const vector<int> &A, int B) {
+    int n=A.size();
+    priority_queue<int> p;
+    for(int i=0;i<B;i++){
+        p.push(A[i]);
+    }
+    for(int i=B;i<n;i++){
+        if(p.top() > A[i]){
+            p.pop();
+            p.push(A[i]);
+        }
+    }
+    return p.top();
+}
