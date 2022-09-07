@@ -1,0 +1,21 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+ListNode* Solution::solve(ListNode* A) {
+    ListNode* temp1 = A;
+    ListNode* temp2 = A;
+    while(temp1!=NULL){
+        if(temp1->val == 0){
+            swap(temp1->val, temp2->val);
+            temp2 = temp2->next;
+        }
+        temp1 = temp1->next;
+    }
+    return A;
+}
+
