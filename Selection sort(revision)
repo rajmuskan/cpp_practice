@@ -1,0 +1,22 @@
+class Solution {
+public:
+    vector<int> sortArray(vector<int>& nums) {
+        int n=nums.size();
+        
+        int k=0;
+        
+        for(int i=0;i<n;i++){
+            int Min=INT_MAX;
+            int temp=0; //keep the index.
+            for(int j=i;j<n;j++){
+                if(nums[j]<Min){
+                    temp =j;
+                    Min = nums[j];
+                }
+            }
+            swap(nums[k],nums[temp]);
+            k++;
+        }
+        return nums;
+    }
+};
