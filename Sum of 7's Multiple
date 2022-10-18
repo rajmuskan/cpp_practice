@@ -1,0 +1,8 @@
+long Solution::solve(int A, int B) {
+    long x, y;
+    long k = floor((A-1)/7);
+    long l = floor(B/7);
+    x = 7 * ((k+1) * k)/ 2;
+    y = 7 * (l * (l+1))/2;
+    return y-x;
+}
