@@ -1,0 +1,8 @@
+int get(int x, int C){
+    int ans = x/10;
+    ans += (x%10 >= C);
+    return ans;
+}
+int Solution::solve(int A, int B, int C) {
+    return get(B,C) - get(A-1,C);
+}
