@@ -1,0 +1,23 @@
+class Solution {
+public:
+    vector<int> findErrorNums(vector<int>& nums) {
+        int n=nums.size();
+        vector<int> store(10001);
+        for(int i=0;i<10001;i++){
+            store[i]=0;
+        } 
+        for(int i=0;i<n;i++){
+            store[nums[i]]++;
+        }
+        int duplicate=0, missing =0;
+        
+        for(int i=1;i<n+1;i++){
+            if(store[i]==2){
+                duplicate=i;
+            }else if(store[i]==0){
+                missing=i;
+            }
+        }
+        return {duplicate, missing};
+    }
+};
