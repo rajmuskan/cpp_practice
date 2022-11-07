@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int maximum69Number (int num) {
+        int temp=num;
+        int indexOfFirstSixFromLeft=-1;
+        int place=0;
+        while(temp>0){
+            if(temp%10 == 6){
+                indexOfFirstSixFromLeft=place;
+            }
+            temp/=10;
+            place++;
+        }
+        return indexOfFirstSixFromLeft==-1? num : num + (3 * pow(10,indexOfFirstSixFromLeft));
+    }
+};
